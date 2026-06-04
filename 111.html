@@ -92,7 +92,7 @@
                         "Hotel": "Hotel", "ShoppingBag": "ShoppingBag", "Bus": "Bus",
                         "Tag": "Tag", "Check": "Check", "X": "X", "Link": "ExternalLink",
                         "Navigation": "Navigation", "Info": "Info", "User": "User", "MapPin": "MapPin", "Map": "Map",
-                        "QrCode": "QrCode", "Camera": "Camera", "Sparkles": "Sparkles"
+                        "QrCode": "QrCode", "Camera": "Camera", "Sparkles": "Sparkles", "ChefHat": "ChefHat"
                     };
                     const targetName = iconMap[name] || name;
                     const kebabName = targetName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
@@ -187,7 +187,7 @@
             // 6/21 DAY 5
             { id: '21_1', dateIndex: 4, startTime: '09:00', name: '行李特工寄放運送行李', address: '弘大住宿處', category: 'Transport', note: '使用行李特工服務 ($536/件)，大行李會當天直接幫你送去東大門飯店，雙手免提行李！' },
             { id: '21_2', dateIndex: 4, startTime: '09:30', name: '北村韓屋村傳統逛街', address: '北村韓屋村', category: 'Sightseeing', note: '09:30 - 11:30 古色古香傳統韓屋街道漫步' },
-            { id: '21_3', dateIndex: 4, startTime: '12:00', name: '景福宮韓服拍照體驗', address: '景福宮周邊韓服店', category: 'Camera', note: '12:00 - 14:30 分頭行動：我跟男友先去預約挑選韓服，之後再和家人會合大拍照！' },
+            { id: '21_3', dateIndex: 4, startTime: '12:00', name: '景福宮韓服拍照體驗', address: '景福宮周邊韓服店', category: 'Camera', note: '12:00 - 14:30 分頭行動：我跟男友先去預約挑選韓服，之後再 and 家人會合大拍照！' },
             { id: '21_4', dateIndex: 4, startTime: '14:30', name: '午餐美食大享用', address: '景福宮商圈', category: 'Food', note: '推薦：骨炭家五花肉 (高人氣熟成肉) 或 安岩豬肉湯飯 (清爽白湯)' },
             { id: '21_5', dateIndex: 4, startTime: '16:00', name: '益善洞逛街 ➔ 前往高速巴士客運站', address: '益善洞 / 鐘路三街站', category: 'Transport', note: '沿路逛下去益善洞喝咖啡、感受老屋新美學。\n交通：從 🚇 鐘路三街站搭地鐵 ③ 號線 ➔ 高速巴士客運站' },
             { id: '21_6', dateIndex: 4, startTime: '18:00', name: 'Sevit 三島水上觀光浮艇', address: '盤浦漢江公園三島', category: 'Sightseeing', note: '18:00 - 19:30 體驗水上浮艇 Tubester\n⚠️ 結束後強烈建議直接全體叫計程車回東大門新住所，免得走回捷運站長輩吃不消！' },
@@ -224,6 +224,92 @@
             { id: 'k5', name: 'Mardi Mercredi 經典小雛菊系列服飾', category: '潮流服飾', intro: '最代表首爾當代街頭的大學T與休閒衛衣短袖', store: '聖水洞選品店', purchased: false }
         ];
 
+        // --- 新增美食靜態資料 ---
+        const foodMasterData = [
+            {
+                id: 'f1',
+                name: '1️⃣✩ 豬腳小姐 (미쓰족발 홍대본점)',
+                subBadge: '正餐',
+                tags: ['弘大', '豬腳'],
+                address: '📍 地鐵②弘大站 8號出口 步行5分鐘',
+                time: '🕒 12:30-00:00 (點餐截至23:30)',
+                price: '💰 招牌蒜味豬腳(大) ₩48,000',
+                phone: '📞 +82-2-337-2111',
+                recommend: '📝 脆推 / 約 ₩13,8/人 ($330)',
+                note: '💡 點大豬腳即免費贈送一鍋熱騰騰的刀切麵與一整盤新鮮沙拉！6女1男點2大份超飽足。',
+                maps: [{ name: '進入 Naver Map 導航 (弘大本店)', url: 'https://naver.me/GubwlgWD' }]
+            },
+            {
+                id: 'f2',
+                name: '2️⃣✩ Jojo刀削面 (조조칼국수 성수점)',
+                subBadge: '正餐',
+                tags: ['聖水洞', '刀削麵'],
+                address: '📍 地鐵②聖水站 3號出口 步行5分鐘',
+                time: '🕒 10:00–21:30',
+                price: '💰 水槍蛤蜊湯 ₩12,000 / 海鮮蔥餅 ₩14,000',
+                phone: '📞 +82-2-468-4333',
+                recommend: '📝 脆推 / 約 ₩10,0/人 ($240)',
+                note: '💡 鮮美水槍蛤蜊爆汁，海鮮蔥餅極致酥脆！7人建議點3份麵+2張蔥餅+1盆蛤蜊湯。',
+                maps: [{ name: '進入 Naver Map 導航 (聖水店)', url: 'https://naver.me/xoH8fSpV' }]
+            },
+            {
+                id: 'f3',
+                name: '3️⃣✩ 安木豬肉湯飯 (안목 성수)',
+                subBadge: '正餐',
+                tags: ['聖水洞', '豬肉湯飯', '現場補位'],
+                address: '📍 地鐵②聖水站 3號出口 步行5分鐘',
+                time: '🕒 10:00～22:00 (最後點餐 21:00)',
+                price: '💰 豬肉湯飯 ₩13,000 / 鮮切熟肉小盤 ₩14,000',
+                phone: '📞 +82-10-8698-1334',
+                recommend: '📝 羅推 / 約 ₩17,4/人 ($410)',
+                note: '💡 顛覆傳統的清爽澄清系湯飯！網美高質感，毫無腥味。7人建議6普通湯飯+1特大+2熟肉。',
+                maps: [{ name: '進入 Naver Map 導航 (安木聖水)', url: 'https://naver.me/5QiPD9S9' }]
+            },
+            {
+                id: 'f4',
+                name: '4️⃣✩ 鳳山精肉 (봉산정육 홍대점)',
+                subBadge: '正餐',
+                tags: ['弘大', '烤肉', '已預約'],
+                address: '📍 地鐵②弘大站 8號出口 步行12分鐘',
+                time: '🕒 12:00-23:00 (最後點餐22:20)',
+                price: '💰 鳳山名品拼盤 ₩232,000 / 蕨菜拌飯 ₩10,000',
+                phone: '📞 +82-10-2816-5144',
+                recommend: '📝 脆推 / 約 ₩38,8/人 ($900)',
+                note: '💡 6女1男完美配比：攻頂1組鳳山名品拼盤(1100g) + 2份香油蕨菜拌飯 + 2碗老辣泡菜冷麵 + 1份砂鍋蒸蛋。',
+                maps: [{ name: '進入 Naver Map 導航 (鳳山精肉)', url: 'https://naver.me/5JGZ9yD5' }]
+            },
+            {
+                id: 'f5',
+                name: '5️⃣✩ Hotel De GGOODD (오뗄드꾸뜨)',
+                subBadge: '正餐',
+                tags: ['延南洞', '義大利麵', '現場候位'],
+                address: '📍 地鐵②弘大站 3號出口 步行10分鐘',
+                time: '🕒 11:00-20:00',
+                price: '💰 蜂蜜培根玫瑰麵 ₩17,0 / 松露奶油燉飯 ₩16,0 / 牛排 ₩33,0',
+                phone: '📞 +82-2-332-8430',
+                recommend: '📝 聽說可在唉居預約 / 約 ₩18,8/人 ($445)',
+                note: '💡 法式浪漫復古獨棟洋房餐酒館！巨無霸培根極誘人。7人推點2份牛排+2份玫瑰麵+2份松露燉飯。',
+                maps: [{ name: '進入 Naver Map 導航 (延南洞店)', url: 'https://naver.me/Fr7p5RtM' }]
+            },
+            {
+                id: 'f6',
+                name: '1️⃣✩ NoMorePizza (노모어피자)',
+                subBadge: '外賣',
+                tags: ['弘大', '東大門', '盤浦漢江'],
+                address: '📍 弘大店 / 東大門店 / 盤浦漢江直營店 皆可外送',
+                time: '🕒 11:00–02:00 (依各分店微調)',
+                price: '💰 玉米鮮蝦披薩 ₩12,800 ~ 13,800',
+                phone: '📞 +82-10-7317-4063',
+                recommend: '📝 脆推 / 漢江公園野餐、飯店宵夜首選',
+                note: '💡 首爾超人氣無邊際披薩！L大尺寸可做半半雙拼。漢江公園叫外送請精準定位至「盤浦漢江公園外送區1號或2號」。',
+                maps: [
+                    { name: '進入 Naver Map 導航 (弘大店)', url: 'https://naver.me/5oE5OhFo' },
+                    { name: '進入 Naver Map 導航 (東大門店)', url: 'https://naver.me/5qD7SwPP' },
+                    { name: '進入 Naver Map 導航 (盤浦漢江公園)', url: 'https://naver.me/x5GouYtl' }
+                ]
+            }
+        ];
+
         // --- 3. App 主組件 ---
         const App = () => {
             const [currentTab, setCurrentTab] = useState('itinerary');
@@ -231,6 +317,11 @@
             const [activeShopCategory, setActiveShopCategory] = useState('彩妝保養');
             const [newShopItemName, setNewShopItemName] = useState('');
             const [showBackup, setShowBackup] = useState(false);
+
+            // 美食分頁的篩選狀態
+            const [activeFoodTag, setActiveFoodTag] = useState('全部');
+            const foodTags = ['全部', '弘大', '延南洞', '望遠市場', '聖水洞', '汝矣島', '景福宮', '東大門', '乙支路', '樂天', '盤浦漢江'];
+
             const STORAGE_SHOP = 'seoul_trip_morandi_v3';
             const [shoppingItems, setShoppingItems] = useState(() => {
                 try {
@@ -241,9 +332,11 @@
                     return items;
                 } catch (e) { return shoppingMasterData; }
             });
+
             useEffect(() => {
                 try { localStorage.setItem(STORAGE_SHOP, JSON.stringify(shoppingItems)); } catch (e) { }
             }, [shoppingItems]);
+
             const togglePurchased = (id) => setShoppingItems(shoppingItems.map(si => si.id === id ? { ...si, purchased: !si.purchased } : si));
             const deleteShopItem = (id) => setShoppingItems(shoppingItems.filter(si => si.id !== id));
             const handleAddShopItem = (e) => {
@@ -253,6 +346,7 @@
                 setShoppingItems([...shoppingItems, newItem]);
                 setNewShopItemName('');
             };
+
             const sortedDayTrips = (dayItems) => {
                 return [...dayItems].sort((a, b) => {
                     const getWeight = (t) => {
@@ -269,6 +363,13 @@
                     return getWeight(a.startTime).localeCompare(getWeight(b.startTime));
                 });
             };
+
+            // 篩選後的美食資料
+            const filteredFoodItems = useMemo(() => {
+                if (activeFoodTag === '全部') return foodMasterData;
+                return foodMasterData.filter(item => item.tags.includes(activeFoodTag));
+            }, [activeFoodTag]);
+
             return (
                 <div className="w-full min-h-screen bg-[#767fa5] relative overflow-hidden flex flex-col grain-overlay sm:rounded-2xl border border-[#eeeeee]/20 shadow-2xl">
                     <div className="absolute inset-0 pointer-events-none opacity-[0.08] dot-grid z-0"></div>
@@ -287,11 +388,13 @@
                                 />
                             </div>
                         </div>
-                        <div className="grid grid-cols-4 gap-1.5 mt-3">
-                            <button onClick={() => setCurrentTab('itinerary')} className={`py-1.5 rounded-md border text-center transition-all text-xs font-bold ${currentTab === 'itinerary' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>行程</button>
-                            <button onClick={() => setCurrentTab('tickets')} className={`py-1.5 rounded-md border text-center transition-all text-xs font-bold ${currentTab === 'tickets' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>票券</button>
-                            <button onClick={() => setCurrentTab('stay')} className={`py-1.5 rounded-md border text-center transition-all text-xs font-bold ${currentTab === 'stay' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>住宿</button>
-                            <button onClick={() => setCurrentTab('shopping')} className={`py-1.5 rounded-md border text-center transition-all text-xs font-bold ${currentTab === 'shopping' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>購物</button>
+                        {/* 這裡改為 grid-cols-5 以容納美食按鈕 */}
+                        <div className="grid grid-cols-5 gap-1.5 mt-3">
+                            <button onClick={() => setCurrentTab('itinerary')} className={`py-1.5 rounded-md border text-center transition-all text-[11px] font-bold ${currentTab === 'itinerary' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>行程</button>
+                            <button onClick={() => setCurrentTab('tickets')} className={`py-1.5 rounded-md border text-center transition-all text-[11px] font-bold ${currentTab === 'tickets' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>票券</button>
+                            <button onClick={() => setCurrentTab('stay')} className={`py-1.5 rounded-md border text-center transition-all text-[11px] font-bold ${currentTab === 'stay' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>住宿</button>
+                            <button onClick={() => setCurrentTab('food')} className={`py-1.5 rounded-md border text-center transition-all text-[11px] font-bold ${currentTab === 'food' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>美食</button>
+                            <button onClick={() => setCurrentTab('shopping')} className={`py-1.5 rounded-md border text-center transition-all text-[11px] font-bold ${currentTab === 'shopping' ? 'bg-[#d7dce7] text-[#646464] border-[#eeeeee] shadow-sm scale-102' : 'bg-white/10 text-white/80 border-white/10 active:bg-white/20'}`}>購物</button>
                         </div>
                     </header>
                     {/* --- 主內容滾動區 --- */}
@@ -416,7 +519,88 @@
                                 ))}
                             </div>
                         )}
-                        {/* 4. 購物分頁 */}
+                        {/* --- 新增：4. 美食精選分頁 --- */}
+                        {currentTab === 'food' && (
+                            <div className="space-y-3 animate-fade-in">
+                                {/* 區域篩選小框框 (橫向捲動) */}
+                                <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 px-0.5">
+                                    {foodTags.map(tag => (
+                                        <button
+                                            key={tag}
+                                            onClick={() => setActiveFoodTag(tag)}
+                                            className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all shrink-0 shadow-2xs ${activeFoodTag === tag
+                                                ? 'bg-[#767fa5] text-white border-[#767fa5] scale-102'
+                                                : 'bg-white text-[#646464] border-[#eeeeee] active:bg-slate-100'
+                                                }`}
+                                        >
+                                            {tag === '全部' ? '✨ 全部' : `# ${tag}`}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* 美食名單清單 */}
+                                <div className="space-y-3.5 mt-1">
+                                    {filteredFoodItems.length > 0 ? (
+                                        filteredFoodItems.map(food => (
+                                            <div key={food.id} className="bg-white border border-[#eeeeee] p-4 rounded-xl shadow-sm text-[#646464] flex flex-col relative overflow-hidden">
+                                                {/* 正餐/外賣 小標誌 */}
+                                                <div className="flex justify-between items-start mb-2">
+                                                    <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded border ${food.subBadge === '正餐'
+                                                        ? 'bg-[#cfd3f1] text-[#4d5370] border-[#b0b7e5]'
+                                                        : 'bg-[#fcd34d]/20 text-[#78350f] border-[#fcd34d]'
+                                                        }`}>
+                                                        {food.subBadge}
+                                                    </span>
+                                                    <div className="flex gap-1">
+                                                        {food.tags.map((t, idx) => (
+                                                            <span key={idx} className="text-[9px] text-[#767fa5] bg-[#767fa5]/5 px-1.5 py-0.2 rounded font-medium">#{t}</span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+
+                                                {/* 店名與主要資訊 */}
+                                                <h4 className="font-bold text-[14px] flex items-center gap-1.5 text-[#646464] mb-2">
+                                                    <Icon name="ChefHat" size={13} className="text-[#767fa5]" /> {food.name}
+                                                </h4>
+
+                                                <div className="space-y-1 text-[11px] text-[#646464]/90 pl-0.5 font-medium">
+                                                    <p>{food.address}</p>
+                                                    <p>{food.time}</p>
+                                                    <p className="font-bold text-[#4d5370]">{food.price}</p>
+                                                    <p>{food.phone}</p>
+                                                    <p className="text-[#767fa5] font-bold bg-[#767fa5]/5 py-0.5 px-1 rounded inline-block">{food.recommend}</p>
+                                                </div>
+
+                                                {/* 溫馨提示備註 */}
+                                                {food.note && (
+                                                    <p className="bg-slate-50 p-2.5 rounded-lg border-l-2 border-[#767fa5] text-[10px] text-[#646464]/90 leading-relaxed mt-2.5 font-normal">
+                                                        {food.note}
+                                                    </p>
+                                                )}
+
+                                                {/* 寬幅直入導航橫條按鈕區 */}
+                                                <div className="mt-3.5 space-y-1.5">
+                                                    {food.maps.map((mapBtn, mIdx) => (
+                                                        <button
+                                                            key={mIdx}
+                                                            onClick={() => window.open(mapBtn.url)}
+                                                            className="w-full bg-[#767fa5] text-white py-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1.5 active:bg-[#4d5370] transition-all shadow-xs"
+                                                        >
+                                                            <Icon name="Map" size={12} /> {mapBtn.name}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="text-center py-10 bg-white/60 rounded-xl border border-dashed border-[#eeeeee] text-sm text-[#767fa5] font-medium">
+                                            該區域目前無規劃美食喔 ☕
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                        {/* 5. 購物分頁 */}
                         {currentTab === 'shopping' && (
                             <div className="animate-fade-in">
                                 <div className="bg-white border border-[#eeeeee] shadow-sm rounded-xl min-h-[440px] flex flex-col overflow-hidden text-[#646464]">
