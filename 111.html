@@ -162,13 +162,12 @@
         ];
 
         const ticketsData = [
-            { id: 'tk1', type: 'Flight', title: '中華航空 CI0162 (台北一航 ➔ 首爾仁川二航)', date: '6/17 15:30 - 19:05', code: 'EBX8K6', model: 'A333', notice: '出發前兩天開放線上選位。抵達二航後，前往 1 樓入境大廳 15、16、17 號出口搭乘機場巴士。' },
-            { id: 'tk2', type: 'Bus', title: '機場巴士 6002 號 (往弘大)', date: '6/17 19:50 發車', notice: '車程約 60 分鐘。直達弘大住宿周邊。' },
-            { id: 'tk3', type: 'Ticket', title: '首爾大公園 天空纜車＋動物園套票', date: '6/18 下午', notice: '票價參考：約 $386 (含纜車 2 回 ＋ 動物園入場)。' },
-            { id: 'tk4', type: 'Link', title: '九宮格拍貼機 (弘大必去合體行程)', date: '6/19 全天可用', url: 'https://naver.me/GRuKQwQb', notice: '營業時間：12:00 - 21:00。全體 7 人一定要一起拍大合照！' },
-            { id: 'tk5', type: 'Link', title: '行李特工 (行李寄送與運送服務)', date: '6/21 早上辦理', url: 'https://www.kkday.com/zh-tw/product/536098?srsltid=AfmBOoqrbQXAiyLkLGcQ_uiP5N_t7yvQ7mHql-YdU0VdqsYQxbdqRgL0', notice: '費用參考：$536/件。直接將大行李從弘大住處運送到東大門，換飯店免自己搬。' },
-            { id: 'tk6', type: 'Ticket', title: 'Sevit 三島水上浮艇 (Tubester)', date: '6/21 18:00 - 19:30', notice: '體驗漢江觀光水上浮艇。結束後強烈建議全體直接在現場叫計程車回東大門，免除走回捷運站的勞累。' },
-            { id: 'tk7', type: 'Flight', title: '中華航空 CI0161 (首爾仁川二航 ➔ 台北一航)', date: '6/24 12:45 - 14:20', code: 'EBX8K6', model: 'A333', notice: '回程班機。出發前兩天記得上網選位。' }
+            { id: 'tk1', type: 'Flight', title: '中華航空 CI0162 (台北一航 ➔ 首爾仁川二航)', date: '6/17 15:30 - 19:05', code: 'EBX8K6', model: 'A333', notice: '1.6/15 15:30機票選位\n2.填寫電子入境卡\n3.整理行李\n4.esim、轉轉卡、護照 備好' },
+            { id: 'tk2', type: 'Ticket', title: 'WOWPASS 實體卡 & AREX 機場鐵道普通車', date: '6/17 入境當天', notice: '1.如何拿實體卡 \n地點:桃園機場一航\n掛完行李還沒出境時拿，拿完再出境，拿到後就可以綁定卡片\n\n2.搭AREX普通車\n(要先儲值T-money 可以儲值₩30000即可)\n儲值地點:靠近10 號出口B1 的 CU 便利商店內（CU仁川國際機場3號店）\n\n搭車地點:「機場鐵道（공항철도 / Airport Railroad）」\n\n前往藍色，在「A03弘大入口站 홍대입구역」 下車' },
+            { id: 'tk3', type: '轉轉卡', title: '漢江遊覽船碼頭', date: '6/20 共有四個班次', notice: '17:00 依戀漢江觀光郵輪 海鷗餵食體驗 40min\n18:00 日落前郵輪 海鷗餵食體驗 40min\n19:00 日落音樂郵輪 70min', refImage: 'https://lh3.googleusercontent.com/d/1RjIthgVKTv-GMfI9f0WaFNSx8bi4Gjw8' },
+            { id: 'tk4', type: '轉轉卡', title: 'Sevit 三島水上浮艇 (Tubester)', date: '6/21 18:00 - 19:30', notice: '體驗漢江觀光水上浮艇。結束後強烈建議全體直接在現場叫計程車回東大門，免除走回捷運站的勞累。\n(可以點外送上去吃)' },
+            { id: 'tk5', type: '轉轉卡', title: '樂天世界', date: '6/22', notice: '待發布，我有空再新增' },
+            { id: 'tk6', type: 'Flight', title: '中華航空 CI0161 (首爾仁川二航 ➔ 台北一航)', date: '6/24 12:45 - 14:20', code: 'EBX8K6', model: 'A333', notice: '回程班機。出發前兩天記得上網選位。\n6/22 12:45記得選位' }
         ];
 
         const defaultTripData = [
@@ -330,7 +329,7 @@
             {
                 id: 'f6',
                 name: '1️⃣✩ NoMorePizza (노모어피자)',
-                subBadge: '外賣',
+                subBadge: '外送',
                 tags: ['弘大', '東大門', '盤浦漢江'],
                 address: '📍 弘大店 / 東大門店 / 盤浦漢江直營店 皆可外送',
                 time: '🕒 11:00–02:00 (依各分店微調)',
@@ -496,7 +495,7 @@
             {
                 id: 'f18',
                 name: '2️⃣✩ 橋村炸雞 (교촌치킨)',
-                subBadge: '外賣',
+                subBadge: '外送',
                 tags: ['東大門', '弘大', '盤浦漢江', '炸雞'],
                 address: '📍 東大門1號店 / 弘大店 / 盤浦1號店',
                 time: '🕒 24小時',
@@ -509,6 +508,112 @@
                     { name: '進入 App 導航 (弘大店)', url: 'https://naver.me/5apDVMWA' },
                     { name: '進入 App 導航 (盤浦漢江店)', url: 'https://naver.me/Fmfaz6HP' }
                 ]
+            },
+            {
+                id: 'f19',
+                name: '1️⃣✩ Jovular (조블라)',
+                subBadge: '下午茶',
+                tags: ['弘大', '蛋糕', '咖啡', '咖啡廳'],
+                address: '📍 地鐵②弘大站 8號出口步行3分鐘',
+                time: '🕒 08:00-24:00 / 周末 09:00-24:00',
+                price: '💰 草莓芒果鮮奶油蛋糕₩11,5 / 巴斯克乳酪蛋糕₩9,5 / 棕色乳酪華夫餅₩14,9 / 黃油年糕₩7,4 / 奶油拿鐵₩7,5',
+                phone: '📞 0507-1355-9243',
+                recommend: '📝 脆友推 / 約 ₩10,0/人 ($200)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (Jovular)', url: 'https://naver.me/G9Ui0Y3F' }
+                ]
+            },
+            {
+                id: 'f20',
+                name: '2️⃣✩ Gyeom舍首爾 (겸사서울)',
+                subBadge: '下午茶',
+                tags: ['弘大', '咖啡', '蛋糕', '咖啡廳'],
+                address: '📍 地鐵②弘大站 3號出口步行10分鐘',
+                time: '🕒 10:00-20:00 / （六日）10:00-22:00',
+                price: '💰 原味蛋塔 Plain Egg Tart ₩4.3 / 巴斯克起司蛋糕 Basque Cheesecake ₩4.8 / 拿鐵 Cafe Latte ₩4.8 / 招牌奶霜咖啡 검사 패너 ₩5.3',
+                phone: '📞 0507-1470-3137',
+                recommend: '📝 脆友推 / 約 ₩10,0/人 ($200)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (겸사서울)', url: 'https://naver.me/FyA5EXoB' }
+                ]
+            },
+            {
+                id: 'f21',
+                name: '1️⃣5️⃣✩ 宇宙家弘大總店 (우주집 홍대본점)',
+                subBadge: '正餐',
+                tags: ['弘大', '燒肉'],
+                address: '📍 地鐵②弘大站 9號出口步行7分鐘',
+                time: '🕒 14:00-23:40',
+                price: '',
+                phone: '📞 02-323-9282',
+                recommend: '📝 哀居推 / 約 ₩30,0/人 ($600)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (우주집)', url: 'https://naver.me/FnsoA2jN' }
+                ]
+            },
+            {
+                id: 'f22',
+                name: '3️⃣✩ Betibeo Seongsu',
+                subBadge: '下午茶',
+                tags: ['聖水洞', '遠', '咖啡廳'],
+                address: '📍 地鐵②聖水站3號出口步行12分鐘（無電梯）',
+                time: '🕒 10:00-21:00 / （五六）10:00-22:00',
+                price: '💰 黑芝麻咖啡 ₩7.0 / 冰淇淋咖啡 ₩7.0 / 黑芝麻冰淇淋 ₩7.5 / 黑芝麻鬆餅 ₩14.0',
+                phone: '📞 0507-1340-4079',
+                recommend: '📝 脆友推 / 約 ₩10,0/人 ($200)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (Betibeo Seongsu)', url: 'https://naver.me/51upMQck' }
+                ]
+            },
+            {
+                id: 'f23',
+                name: '4️⃣✩ 日記 (일기 ilgi)',
+                subBadge: '下午茶',
+                tags: ['弘大', '咖啡廳', '手沖咖啡'],
+                address: '📍 地鐵②弘大站 3號出口步行13分鐘',
+                time: '🕒 11:00-18:00 / （五六）12:00-20:00 / （日）公休',
+                price: '💰 胡椒法式吐司 ₩10.0',
+                phone: '📞 0507-1361-5017',
+                recommend: '📝 脆友推 / 約 ₩10,0/人 ($200)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (일기 ilgi)', url: 'https://naver.me/FXnSarBu' }
+                ]
+            },
+            {
+                id: 'f24',
+                name: '3️⃣✩ Maman Gelato Seongsu',
+                subBadge: '小吃',
+                tags: ['聖水洞', '杜拜巧克力冰淇淋'],
+                address: '📍 地鐵②聖水站 3號出口步行3分鐘',
+                time: '🕒 11:30-21:00',
+                price: '💰 草莓杜拜巧克力冰淇淋 ₩12.0',
+                phone: '📞 02-466-3373',
+                recommend: '📝 脆友推 / 約 ₩12,0/人 ($240)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (Maman Gelato Seongsu)', url: 'https://naver.me/IgMihDKz' },
+                    { name: '查看菜單參考圖片 (Google Drive)', url: 'https://drive.google.com/file/d/1feT3uqY92MH-huES8XrMgaANp2YIA5N7/view?usp=sharing' }
+                ]
+            },
+            {
+                id: 'f25',
+                name: '1️⃣6️⃣✩ 3日韓牛湯飯 (3일한우국밥)',
+                subBadge: '正餐',
+                tags: ['弘大', '湯飯'],
+                address: '📍 地鐵②弘大站 9號出口步行5分鐘',
+                time: '🕒 24小時營業',
+                price: '💰 韓牛湯飯 ₩12.0',
+                phone: '📞 02-336-0107',
+                recommend: '📝 佳君阿姨推 / 約 ₩12,0/人 ($240)',
+                note: '',
+                maps: [
+                    { name: '進入 Naver Map 導航 (3日韓牛湯飯)', url: 'https://naver.me/FpwtrrDN' }
+                ]
             }
         ];
 
@@ -519,9 +624,11 @@
             const [activeShopCategory, setActiveShopCategory] = useState('彩妝保養');
             const [newShopItemName, setNewShopItemName] = useState('');
             const [showBackup, setShowBackup] = useState(false);
-            const [isImgModalOpen, setIsImgModalOpen] = useState(false);
+            const [modalImgUrl, setModalImgUrl] = useState(null);
 
             // 美食分頁的篩選狀態
+            const [activeFoodCategory, setActiveFoodCategory] = useState('全部');
+            const foodCategories = ['全部', '正餐', '外送', '下午茶', '小吃'];
             const [activeFoodTag, setActiveFoodTag] = useState('全部');
             const foodTags = ['全部', '弘大', '延南洞', '望遠市場', '聖水洞', '汝矣島', '新村', '景福宮', '東大門', '乙支路', '樂天', '盤浦漢江'];
 
@@ -569,9 +676,12 @@
 
             // 篩選後的美食資料
             const filteredFoodItems = useMemo(() => {
-                if (activeFoodTag === '全部') return foodMasterData;
-                return foodMasterData.filter(item => item.tags.includes(activeFoodTag));
-            }, [activeFoodTag]);
+                return foodMasterData.filter(item => {
+                    const matchCategory = activeFoodCategory === '全部' || item.subBadge === activeFoodCategory;
+                    const matchTag = activeFoodTag === '全部' || item.tags.includes(activeFoodTag);
+                    return matchCategory && matchTag;
+                });
+            }, [activeFoodCategory, activeFoodTag]);
 
             return (
                 <div className="w-full min-h-screen bg-[#767fa5] relative overflow-hidden flex flex-col grain-overlay sm:rounded-2xl border border-[#eeeeee]/20 shadow-2xl">
@@ -584,7 +694,7 @@
                                 <p className="text-[10px] text-[#d7dce7] font-semibold tracking-wider mt-0.5">7人自由行- ̗̀( ˘˙ࠔ˙˘) ̖́-</p>
                             </div>
                             <div
-                                onClick={() => setIsImgModalOpen(true)}
+                                onClick={() => setModalImgUrl("https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP")}
                                 className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#eeeeee] shadow-md shrink-0 bg-white cursor-pointer active:scale-95 transition-all"
                             >
                                 <img
@@ -687,7 +797,24 @@
                                         </div>
                                         <p className="text-[13px] font-bold text-[#646464] leading-tight mb-1">{tk.title}</p>
                                         {tk.code && <p className="text-[10px] font-mono text-[#767fa5] font-bold bg-[#d7dce7]/30 px-2 py-0.5 rounded inline-block mt-1 tracking-wider">代號: {tk.code} ({tk.model})</p>}
-                                        <p className="text-[11px] text-[#646464]/80 mt-2 bg-slate-50 p-2 rounded-lg border border-dashed border-[#eeeeee] leading-relaxed">{tk.notice}</p>
+                                        <p className="text-[11px] text-[#646464]/80 mt-2 bg-slate-50 p-2 rounded-lg border border-dashed border-[#eeeeee] leading-relaxed whitespace-pre-wrap">{tk.notice}</p>
+                                        {tk.refImage && (
+                                            <div
+                                                onClick={() => setModalImgUrl(tk.refImage)}
+                                                className="mt-2.5 border border-[#eeeeee] p-1.5 rounded-lg bg-slate-50 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all shadow-2xs active:scale-[0.98]"
+                                            >
+                                                <div className="w-12 h-12 rounded bg-slate-200 overflow-hidden border border-[#eeeeee] shrink-0 flex items-center justify-center">
+                                                    <img src={tk.refImage} className="w-full h-full object-cover" alt="參考圖" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <p className="text-[11px] font-bold text-[#767fa5] flex items-center gap-1">
+                                                        <Icon name="ImageIcon" size={12} /> 點擊查看班次參考圖片
+                                                    </p>
+                                                    <p className="text-[9px] text-[#646464]/60">6/20 船班時刻表</p>
+                                                </div>
+                                                <Icon name="Camera" size={12} className="opacity-50 text-[#767fa5] mr-1" />
+                                            </div>
+                                        )}
                                         {tk.url && (
                                             <button onClick={() => window.open(tk.url)} className="mt-2.5 w-full bg-white border border-[#767fa5] text-[#767fa5] py-1.5 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 active:bg-[#767fa5] active:text-white transition-all shadow-2xs">
                                                 <Icon name="Link" size={10} /> 開啟專屬 Naver / KKday 連結
@@ -740,6 +867,22 @@
                         {/* --- 新增：4. 美食精選分頁 --- */}
                         {currentTab === 'food' && (
                             <div className="space-y-3 animate-fade-in">
+                                {/* 分類篩選小框框 (橫向捲動) */}
+                                <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 px-0.5">
+                                    {foodCategories.map(cat => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setActiveFoodCategory(cat)}
+                                            className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all shrink-0 shadow-2xs ${activeFoodCategory === cat
+                                                ? 'bg-[#767fa5] text-white border-[#767fa5] scale-102'
+                                                : 'bg-white text-[#646464] border-[#eeeeee] active:bg-slate-100'
+                                                }`}
+                                        >
+                                            {cat === '全部' ? '✨ 全部' : `# ${cat}`}
+                                        </button>
+                                    ))}
+                                </div>
+
                                 {/* 區域篩選小框框 (橫向捲動) */}
                                 <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 px-0.5">
                                     {foodTags.map(tag => (
@@ -765,9 +908,13 @@
                                                 <div className="flex justify-between items-start mb-2">
                                                     <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded border ${food.subBadge === '正餐'
                                                         ? 'bg-[#cfd3f1] text-[#4d5370] border-[#b0b7e5]'
-                                                        : food.subBadge === '小吃'
-                                                            ? 'bg-[#d1fae5] text-[#065f46] border-[#a7f3d0]'
-                                                            : 'bg-[#fcd34d]/20 text-[#78350f] border-[#fcd34d]'
+                                                        : food.subBadge === '外送'
+                                                            ? 'bg-[#ffedd5] text-[#9a3412] border-[#fed7aa]'
+                                                            : food.subBadge === '下午茶'
+                                                                ? 'bg-[#fce7f3] text-[#9d174d] border-[#fbcfe8]'
+                                                                : food.subBadge === '小吃'
+                                                                    ? 'bg-[#d1fae5] text-[#065f46] border-[#a7f3d0]'
+                                                                    : 'bg-[#fcd34d]/20 text-[#78350f] border-[#fcd34d]'
                                                         }`}>
                                                         {food.subBadge}
                                                     </span>
@@ -865,19 +1012,19 @@
                     </main>
 
                     {/* 圖片放大 Modal */}
-                    {isImgModalOpen && (
+                    {modalImgUrl && (
                         <div
                             className="fixed inset-0 bg-black/85 z-[9999] flex items-center justify-center p-4 animate-fade-in backdrop-blur-[2px] cursor-zoom-out"
-                            onClick={() => setIsImgModalOpen(false)}
+                            onClick={() => setModalImgUrl(null)}
                         >
                             <div className="relative max-w-[90%] max-h-[85%] bg-white p-1.5 rounded-xl shadow-2xl animate-scale-up" onClick={e => e.stopPropagation()}>
                                 <img
-                                    src="https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP"
+                                    src={modalImgUrl}
                                     className="w-full h-auto max-h-[70vh] rounded-lg object-contain"
-                                    alt="家族7人Q版大合照 放大"
+                                    alt="圖片 放大"
                                 />
                                 <button
-                                    onClick={() => setIsImgModalOpen(false)}
+                                    onClick={() => setModalImgUrl(null)}
                                     className="absolute -top-10 right-0 text-white hover:text-red-400 bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all text-xs font-bold flex items-center justify-center gap-1 border border-white/20 px-3 cursor-pointer"
                                 >
                                     <Icon name="X" size={12} /> 關閉
