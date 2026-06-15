@@ -617,6 +617,66 @@
             }
         ];
 
+        const membersData = [
+            {
+                id: 1,
+                name: '成員1-池梓綺',
+                englishName: 'CHIH TZUCHI',
+                birthday: '2004/05/09',
+                passport: '352252213',
+                expiryDate: '2029/05/17',
+                koreaEntry: 'EAC-26-GA-10937897',
+                koreaEntryImage: 'https://lh3.googleusercontent.com/d/1FjIMGhTyV6AsF7JVIzJqhImlEIpiIzej',
+                koreaEntryImageDrive: 'https://drive.google.com/file/d/1FjIMGhTyV6AsF7JVIzJqhImlEIpiIzej/view?usp=sharing'
+            },
+            {
+                id: 2,
+                name: '成員2-羅逸宏',
+                englishName: 'LUO YIHONG',
+                birthday: '2003/08/30',
+                passport: '366861577',
+                expiryDate: '2034/08/28',
+                koreaEntry: 'EAC-26-GA-10937898',
+                koreaEntryImage: 'https://lh3.googleusercontent.com/d/1RrOAHIK7TFv_FkmvRgyWDbuOf_6s7LlG',
+                koreaEntryImageDrive: 'https://drive.google.com/file/d/1RrOAHIK7TFv_FkmvRgyWDbuOf_6s7LlG/view?usp=sharing'
+            },
+            {
+                id: 3,
+                name: '成員3-游舒晴',
+                englishName: 'YU SHUCHING',
+                birthday: '1974/01/20',
+                passport: '368870180',
+                expiryDate: '2035/06/19',
+                koreaEntry: 'EAC-26-GA-10937899',
+                koreaEntryImage: 'https://lh3.googleusercontent.com/d/1-BI9Itt_7gQg_2Ua1cZCacgaAd_LUj2m',
+                koreaEntryImageDrive: 'https://drive.google.com/file/d/1-BI9Itt_7gQg_2Ua1cZCacgaAd_LUj2m/view?usp=sharing'
+            },
+            {
+                id: 4,
+                name: '成員4-池梓菱',
+                englishName: 'CHIH TZULING',
+                birthday: '2007/12/03',
+                passport: '368870181',
+                expiryDate: '2035/06/19',
+                koreaEntry: 'EAC-26-GA-10937900',
+                koreaEntryImage: 'https://lh3.googleusercontent.com/d/1FpLXNDCNrghcx-gxNYdLRFEM4rxvQSv9',
+                koreaEntryImageDrive: 'https://drive.google.com/file/d/1FpLXNDCNrghcx-gxNYdLRFEM4rxvQSv9/view?usp=sharing'
+            },
+            {
+                id: 5,
+                name: '成員5-黃慧津',
+                englishName: 'HUANG HUICHIN',
+                birthday: '1952/09/22',
+                passport: '352726771',
+                expiryDate: '2029/08/19',
+                koreaEntry: 'EAC-26-PA-10913489',
+                koreaEntryImage: 'https://lh3.googleusercontent.com/d/1VLQAbszrCnnO4q2z93iwygyMRLL3K7KE',
+                koreaEntryImageDrive: 'https://drive.google.com/file/d/1VLQAbszrCnnO4q2z93iwygyMRLL3K7KE/view?usp=sharing'
+            },
+            { id: 6, name: '成員6-楊璦菱' },
+            { id: 7, name: '成員7-游佳諭' }
+        ];
+
         // --- 3. App 主組件 ---
         const App = () => {
             const [currentTab, setCurrentTab] = useState('itinerary');
@@ -625,6 +685,8 @@
             const [newShopItemName, setNewShopItemName] = useState('');
             const [showBackup, setShowBackup] = useState(false);
             const [modalImgUrl, setModalImgUrl] = useState(null);
+            const [showMembersModal, setShowMembersModal] = useState(false);
+            const [selectedMemberId, setSelectedMemberId] = useState(null);
 
             // 美食分頁的篩選狀態
             const [activeFoodCategory, setActiveFoodCategory] = useState('全部');
@@ -693,15 +755,25 @@
                                 <h1 className="text-xl font-bold tracking-tight text-white">8天7夜 首爾家族旅程</h1>
                                 <p className="text-[10px] text-[#d7dce7] font-semibold tracking-wider mt-0.5">7人自由行- ̗̀( ˘˙ࠔ˙˘) ̖́-</p>
                             </div>
-                            <div
-                                onClick={() => setModalImgUrl("https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP")}
-                                className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#eeeeee] shadow-md shrink-0 bg-white cursor-pointer active:scale-95 transition-all"
-                            >
-                                <img
-                                    src="https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP"
-                                    className="w-full h-full object-cover object-center"
-                                    alt="家族7人Q版大合照"
-                                />
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={() => setShowMembersModal(true)}
+                                    className="flex flex-col items-center justify-center w-12 h-12 bg-white/10 hover:bg-white/20 active:scale-95 transition-all rounded-xl border border-white/20 text-[#eeeeee]"
+                                    title="成員資料"
+                                >
+                                    <Icon name="User" size={18} />
+                                    <span className="text-[9px] font-bold mt-0.5">成員</span>
+                                </button>
+                                <div
+                                    onClick={() => setModalImgUrl("https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP")}
+                                    className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#eeeeee] shadow-md shrink-0 bg-white cursor-pointer active:scale-95 transition-all"
+                                >
+                                    <img
+                                        src="https://lh3.googleusercontent.com/d/1Zz2oiQbRp3MHR0Itm558k-f8qawoI4BP"
+                                        className="w-full h-full object-cover object-center"
+                                        alt="家族7人Q版大合照"
+                                    />
+                                </div>
                             </div>
                         </div>
                         {/* 這裡改為 grid-cols-5 以容納美食按鈕 */}
@@ -1010,6 +1082,107 @@
                             </div>
                         )}
                     </main>
+
+                    {/* 成員資料 Modal */}
+                    {showMembersModal && (
+                        <div
+                            className="fixed inset-0 bg-black/60 z-[999] flex items-center justify-center p-4 animate-fade-in backdrop-blur-[1px]"
+                            onClick={() => {
+                                setSelectedMemberId(null);
+                                setShowMembersModal(false);
+                            }}
+                        >
+                            <div
+                                className="bg-[#f8f9fa] w-full max-w-[340px] rounded-2xl shadow-2xl flex flex-col max-h-[80vh] overflow-hidden border border-white/20 text-[#646464] animate-scale-up"
+                                onClick={e => e.stopPropagation()}
+                            >
+                                {/* Header */}
+                                <div className="p-4 bg-[#767fa5] text-white flex justify-between items-center shrink-0">
+                                    <h3 className="text-sm font-bold flex items-center gap-1.5">
+                                        <Icon name="User" size={16} /> 成員資料
+                                    </h3>
+                                    <button
+                                        onClick={() => {
+                                            setSelectedMemberId(null);
+                                            setShowMembersModal(false);
+                                        }}
+                                        className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+                                    >
+                                        <Icon name="X" size={16} />
+                                    </button>
+                                </div>
+
+                                {/* List */}
+                                <div className="p-4 overflow-y-auto no-scrollbar flex-1 space-y-3 bg-[#f8f9fa]">
+                                    {membersData.map((m) => {
+                                        const isSelected = selectedMemberId === m.id;
+                                        const hasDetails = !!m.englishName;
+                                        return (
+                                            <div key={m.id} className="bg-white border border-[#eeeeee] rounded-xl overflow-hidden shadow-2xs">
+                                                <button
+                                                    onClick={() => setSelectedMemberId(isSelected ? null : m.id)}
+                                                    className="w-full p-3.5 flex items-center justify-between text-left active:bg-slate-50 transition-all text-[12px] font-bold text-[#646464]"
+                                                >
+                                                    <span className="flex items-center gap-2">
+                                                        <span className="w-5 h-5 rounded-full bg-[#d7dce7] text-[#767fa5] flex items-center justify-center text-[10px] font-bold">
+                                                            {m.id}
+                                                        </span>
+                                                        {m.name}
+                                                    </span>
+                                                    <Icon name={isSelected ? "ChevronUp" : "ChevronDown"} size={14} className="opacity-60 text-[#767fa5]" />
+                                                </button>
+                                                {isSelected && (
+                                                    <div className="px-4 pb-4 pt-1.5 border-t border-[#f1f3f5] bg-slate-50/50 space-y-2 text-[11px] font-normal leading-relaxed text-[#646464] animate-fade-in">
+                                                        {hasDetails ? (
+                                                            <div className="space-y-1.5">
+                                                                <div className="flex justify-between border-b border-slate-100 pb-1">
+                                                                    <span className="text-slate-400">英文姓名</span>
+                                                                    <span className="font-bold text-[#4d5370]">{m.englishName}</span>
+                                                                </div>
+                                                                <div className="flex justify-between border-b border-slate-100 pb-1">
+                                                                    <span className="text-slate-400">生日</span>
+                                                                    <span className="font-semibold text-slate-700">{m.birthday}</span>
+                                                                </div>
+                                                                <div className="flex justify-between border-b border-slate-100 pb-1">
+                                                                    <span className="text-slate-400">護照號碼</span>
+                                                                    <span className="font-mono text-slate-700">{m.passport}</span>
+                                                                </div>
+                                                                <div className="flex justify-between border-b border-slate-100 pb-1">
+                                                                    <span className="text-slate-400">效期截止日</span>
+                                                                    <span className="font-mono text-slate-700">{m.expiryDate}</span>
+                                                                </div>
+                                                                <div className="pt-1.5">
+                                                                    <p className="text-slate-400 mb-1.5">韓國電子入境號碼</p>
+                                                                    <p className="font-mono font-bold text-[#4d5370] bg-[#d7dce7]/30 px-2 py-1 rounded inline-block text-[10px] tracking-wider mb-2">
+                                                                        {m.koreaEntry}
+                                                                    </p>
+                                                                    {m.koreaEntryImage && (
+                                                                        <div className="mt-1 flex flex-wrap gap-2">
+                                                                            <button
+                                                                                onClick={() => setModalImgUrl(m.koreaEntryImage)}
+                                                                                className="flex items-center gap-1 px-3 py-1.5 bg-[#767fa5] text-white rounded-lg text-[10px] font-bold shadow-2xs hover:bg-[#626a8d] active:scale-95 transition-all cursor-pointer"
+                                                                            >
+                                                                                <Icon name="ImageIcon" size={11} /> 點擊看入境卡圖片
+                                                                            </button>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        ) : (
+                                                            <div className="text-center py-3 text-slate-400 italic font-medium flex items-center justify-center gap-1">
+                                                                <Icon name="Info" size={12} className="opacity-75" />
+                                                                其他成員資料稍後提供 ☕
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* 圖片放大 Modal */}
                     {modalImgUrl && (
