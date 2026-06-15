@@ -617,6 +617,32 @@
             }
         ];
 
+        // --- 新增：購物店家靜態資料 ---
+        const shoppingStoreData = [
+            {
+                id: 'ss1',
+                name: '1️⃣ Olive Young (東大門歷史文化公園店)',
+                location: '東大門',
+                tags: ['美妝', '保養品'],
+                address: '📍 地鐵②東大門歷史文化公園站 14號出口步行2分鐘',
+                time: '🕒 10:00-23:30',
+                phone: '📞 1577-4887',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/50B0SHyV' }]
+            },
+            {
+                id: 'ss2',
+                name: '2️⃣ 大創 (東大門店)',
+                location: '東大門',
+                tags: ['美妝', '小物'],
+                address: '📍 地鐵②東大門歷史文化公園站 11號出口步行1分鐘',
+                time: '🕒 10:30-21:00',
+                phone: '📞 1522-4400',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/xG0RUxrz' }]
+            }
+        ];
+
         const membersData = [
             {
                 id: 1,
@@ -744,6 +770,22 @@
                     return matchCategory && matchTag;
                 });
             }, [activeFoodCategory, activeFoodTag]);
+
+            // 購物店家的篩選狀態
+            const [shoppingSubTab, setShoppingSubTab] = useState('stores');
+            const [activeShopStoreLocation, setActiveShopStoreLocation] = useState('全部');
+            const shopStoreLocations = ['全部', '東大門'];
+            const [activeShopStoreTag, setActiveShopStoreTag] = useState('全部');
+            const shopStoreTags = ['全部', '美妝', '保養品', '小物', '藥局', '帽子'];
+
+            // 篩選後的購物店家資料
+            const filteredShopStores = useMemo(() => {
+                return shoppingStoreData.filter(item => {
+                    const matchLocation = activeShopStoreLocation === '全部' || item.location === activeShopStoreLocation;
+                    const matchTag = activeShopStoreTag === '全部' || item.tags.includes(activeShopStoreTag);
+                    return matchLocation && matchTag;
+                });
+            }, [activeShopStoreLocation, activeShopStoreTag]);
 
             return (
                 <div className="w-full min-h-screen bg-[#767fa5] relative overflow-hidden flex flex-col grain-overlay sm:rounded-2xl border border-[#eeeeee]/20 shadow-2xl">
@@ -936,7 +978,7 @@
                                 ))}
                             </div>
                         )}
-                        {/* --- 新增：4. 美食精選分頁 --- */}
+                        {/* --- 美食精選分頁 --- */}
                         {currentTab === 'food' && (
                             <div className="space-y-3 animate-fade-in">
                                 {/* 分類篩選小框框 (橫向捲動) */}
@@ -1041,44 +1083,151 @@
                         )}
                         {/* 5. 購物分頁 */}
                         {currentTab === 'shopping' && (
-                            <div className="animate-fade-in">
-                                <div className="bg-white border border-[#eeeeee] shadow-sm rounded-xl min-h-[440px] flex flex-col overflow-hidden text-[#646464]">
-                                    <div className="grid grid-cols-3 gap-0.5 p-1 bg-slate-50 border-b border-[#eeeeee]">
-                                        {['彩妝保養', '零食伴手禮', '潮流服飾'].map(cat => (
-                                            <button key={cat} onClick={() => setActiveShopCategory(cat)} className={`py-1.5 text-[10px] font-bold rounded transition-all ${activeShopCategory === cat ? 'bg-[#767fa5] text-white shadow-xs' : 'text-[#646464]'}`}>{cat}</button>
-                                        ))}
-                                    </div>
-                                    <div className="p-4 flex-1 flex flex-col">
-                                        <h2 className="text-xs font-bold mb-3 tracking-wider flex items-center gap-2 text-[#767fa5]">
-                                            <Icon name="ShoppingBag" size={12} /> {activeShopCategory} CHECKLIST
-                                        </h2>
-                                        <div className="flex-1 space-y-2 overflow-y-auto max-h-[250px] no-scrollbar px-0.5">
-                                            {shoppingItems
-                                                .filter(item => item.category === activeShopCategory)
-                                                .sort((a, b) => a.purchased - b.purchased)
-                                                .map(item => (
-                                                    <div key={item.id} className="flex items-center gap-2 animate-fade-in">
-                                                        <div className="flex-1 flex items-center justify-between p-3 bg-white border border-[#eeeeee] rounded-lg shadow-2xs overflow-hidden">
-                                                            <div className="flex items-center gap-2.5 flex-1 overflow-hidden">
-                                                                <button onClick={() => togglePurchased(item.id)} className={`w-4 h-4 border-2 border-[#767fa5] rounded-sm flex items-center justify-center shrink-0 transition-all ${item.purchased ? 'bg-[#767fa5]' : 'bg-white'}`}>
-                                                                    {item.purchased && <Icon name="Check" size={10} className="text-white" />}
-                                                                </button>
-                                                                <div className="flex flex-col text-left truncate flex-1">
-                                                                    <span className={`text-[12px] transition-all truncate ${item.purchased ? 'line-through opacity-35 italic text-[#646464]/60' : 'font-bold text-[#646464]'}`}>{item.name}</span>
-                                                                    <span className="text-[9px] text-[#646464]/60 truncate">{item.intro} ({item.store})</span>
-                                                                </div>
+                            <div className="animate-fade-in space-y-3">
+                                {/* 子分頁切換按鈕 */}
+                                <div className="flex gap-2 bg-slate-100/60 p-1 rounded-xl border border-[#eeeeee]">
+                                    <button
+                                        onClick={() => setShoppingSubTab('stores')}
+                                        className={`flex-1 py-1.5 rounded-lg text-center transition-all text-xs font-bold ${shoppingSubTab === 'stores'
+                                            ? 'bg-[#767fa5] text-white shadow-xs'
+                                            : 'text-[#646464] active:bg-slate-200/50 hover:bg-slate-50/50'
+                                            }`}
+                                    >
+                                        🛍️ 購物店家
+                                    </button>
+                                    <button
+                                        onClick={() => setShoppingSubTab('list')}
+                                        className={`flex-1 py-1.5 rounded-lg text-center transition-all text-xs font-bold ${shoppingSubTab === 'list'
+                                            ? 'bg-[#767fa5] text-white shadow-xs'
+                                            : 'text-[#646464] active:bg-slate-200/50 hover:bg-slate-50/50'
+                                            }`}
+                                    >
+                                        📝 購物清單
+                                    </button>
+                                </div>
+
+                                {shoppingSubTab === 'stores' ? (
+                                    <div className="space-y-3.5 animate-fade-in">
+                                        {/* 第一行選擇：分類標籤 */}
+                                        <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 px-0.5">
+                                            {shopStoreTags.map(tag => (
+                                                <button
+                                                    key={tag}
+                                                    onClick={() => setActiveShopStoreTag(tag)}
+                                                    className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all shrink-0 shadow-2xs ${activeShopStoreTag === tag
+                                                        ? 'bg-[#767fa5] text-white border-[#767fa5] scale-102'
+                                                        : 'bg-white text-[#646464] border-[#eeeeee] active:bg-slate-100'
+                                                        }`}
+                                                >
+                                                    {tag === '全部' ? '✨ 全部標籤' : `# ${tag}`}
+                                                </button>
+                                            ))}
+                                        </div>
+
+                                        {/* 第二行選擇：地理位置的 (地點) */}
+                                        <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 px-0.5">
+                                            {shopStoreLocations.map(loc => (
+                                                <button
+                                                    key={loc}
+                                                    onClick={() => setActiveShopStoreLocation(loc)}
+                                                    className={`px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all shrink-0 shadow-2xs ${activeShopStoreLocation === loc
+                                                        ? 'bg-[#767fa5] text-white border-[#767fa5] scale-102'
+                                                        : 'bg-white text-[#646464] border-[#eeeeee] active:bg-slate-100'
+                                                        }`}
+                                                >
+                                                    {loc === '全部' ? '📍 全部地區' : `📍 ${loc}`}
+                                                </button>
+                                            ))}
+                                        </div>
+
+                                        {/* 購物店家列表 */}
+                                        <div className="space-y-3.5 mt-1">
+                                            {filteredShopStores.length > 0 ? (
+                                                filteredShopStores.map(store => (
+                                                    <div key={store.id} className="bg-white border border-[#eeeeee] p-4 rounded-xl shadow-sm text-[#646464] flex flex-col relative overflow-hidden">
+                                                        {/* 地點與標籤標記 */}
+                                                        <div className="flex justify-between items-start mb-2">
+                                                            <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded border bg-[#d1fae5] text-[#065f46] border-[#a7f3d0]">
+                                                                {store.location}
+                                                            </span>
+                                                            <div className="flex gap-1">
+                                                                {store.tags.map((t, idx) => (
+                                                                    <span key={idx} className="text-[9px] text-[#767fa5] bg-[#767fa5]/5 px-1.5 py-0.2 rounded font-medium">#{t}</span>
+                                                                ))}
                                                             </div>
                                                         </div>
-                                                        <button onClick={() => deleteShopItem(item.id)} className="p-2 text-[#646464]/60 hover:text-red-500 transition-all bg-slate-50 rounded-lg border border-[#eeeeee]"><Icon name="X" size={11} /></button>
+
+                                                        {/* 店名 */}
+                                                        <h4 className="font-bold text-[14px] flex items-center gap-1.5 text-[#646464] mb-2">
+                                                            <Icon name="ShoppingBag" size={13} className="text-[#767fa5]" /> {store.name}
+                                                        </h4>
+
+                                                        {/* 詳細資訊 */}
+                                                        <div className="space-y-1 text-[11px] text-[#646464]/90 pl-0.5 font-medium">
+                                                            <p>{store.address}</p>
+                                                            <p>{store.time}</p>
+                                                            <p>{store.phone}</p>
+                                                            <p className="text-[#767fa5] font-bold bg-[#767fa5]/5 py-0.5 px-1 rounded inline-block">{store.recommend}</p>
+                                                        </div>
+
+                                                        {/* Naver Map 按鈕 */}
+                                                        {store.maps && store.maps.map((mapBtn, mIdx) => (
+                                                            <button
+                                                                key={mIdx}
+                                                                onClick={() => window.open(mapBtn.url)}
+                                                                className="mt-3.5 w-full bg-[#767fa5] text-white py-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1.5 active:bg-[#4d5370] transition-all shadow-xs"
+                                                            >
+                                                                <Icon name="Map" size={12} /> {mapBtn.name}
+                                                            </button>
+                                                        ))}
                                                     </div>
-                                                ))}
+                                                ))
+                                            ) : (
+                                                <div className="text-center py-10 bg-white/60 rounded-xl border border-dashed border-[#eeeeee] text-sm text-[#767fa5] font-medium animate-fade-in">
+                                                    該地區或標籤目前無推薦店家喔 ☕
+                                                </div>
+                                            )}
                                         </div>
-                                        <form onSubmit={handleAddShopItem} className="mt-3 flex gap-2 border-t border-[#eeeeee] pt-3">
-                                            <input value={newShopItemName} onChange={e => setNewShopItemName(e.target.value)} placeholder={`新增至 ${activeShopCategory}...`} className="flex-1 bg-slate-50 border border-[#eeeeee] px-3 py-1.5 text-[11px] rounded-md outline-none focus:border-[#767fa5]" />
-                                            <button type="submit" className="bg-[#767fa5] text-white px-4 rounded-md font-bold text-sm active:opacity-90">✢</button>
-                                        </form>
                                     </div>
-                                </div>
+                                ) : (
+                                    <div className="bg-white border border-[#eeeeee] shadow-sm rounded-xl min-h-[440px] flex flex-col overflow-hidden text-[#646464] animate-fade-in">
+                                        <div className="grid grid-cols-3 gap-0.5 p-1 bg-slate-50 border-b border-[#eeeeee]">
+                                            {['彩妝保養', '零食伴手禮', '潮流服飾'].map(cat => (
+                                                <button key={cat} onClick={() => setActiveShopCategory(cat)} className={`py-1.5 text-[10px] font-bold rounded transition-all ${activeShopCategory === cat ? 'bg-[#767fa5] text-white shadow-xs' : 'text-[#646464]'}`}>{cat}</button>
+                                            ))}
+                                        </div>
+                                        <div className="p-4 flex-1 flex flex-col">
+                                            <h2 className="text-xs font-bold mb-3 tracking-wider flex items-center gap-2 text-[#767fa5]">
+                                                <Icon name="ShoppingBag" size={12} /> {activeShopCategory} CHECKLIST
+                                            </h2>
+                                            <div className="flex-1 space-y-2 overflow-y-auto max-h-[250px] no-scrollbar px-0.5">
+                                                {shoppingItems
+                                                    .filter(item => item.category === activeShopCategory)
+                                                    .sort((a, b) => a.purchased - b.purchased)
+                                                    .map(item => (
+                                                        <div key={item.id} className="flex items-center gap-2 animate-fade-in">
+                                                            <div className="flex-1 flex items-center justify-between p-3 bg-white border border-[#eeeeee] rounded-lg shadow-2xs overflow-hidden">
+                                                                <div className="flex items-center gap-2.5 flex-1 overflow-hidden">
+                                                                    <button onClick={() => togglePurchased(item.id)} className={`w-4 h-4 border-2 border-[#767fa5] rounded-sm flex items-center justify-center shrink-0 transition-all ${item.purchased ? 'bg-[#767fa5]' : 'bg-white'}`}>
+                                                                        {item.purchased && <Icon name="Check" size={10} className="text-white" />}
+                                                                    </button>
+                                                                    <div className="flex flex-col text-left truncate flex-1">
+                                                                        <span className={`text-[12px] transition-all truncate ${item.purchased ? 'line-through opacity-35 italic text-[#646464]/60' : 'font-bold text-[#646464]'}`}>{item.name}</span>
+                                                                        <span className="text-[9px] text-[#646464]/60 truncate">{item.intro} ({item.store})</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button onClick={() => deleteShopItem(item.id)} className="p-2 text-[#646464]/60 hover:text-red-500 transition-all bg-slate-50 rounded-lg border border-[#eeeeee]"><Icon name="X" size={11} /></button>
+                                                        </div>
+                                                    ))}
+                                            </div>
+                                            <form onSubmit={handleAddShopItem} className="mt-3 flex gap-2 border-t border-[#eeeeee] pt-3">
+                                                <input value={newShopItemName} onChange={e => setNewShopItemName(e.target.value)} placeholder={`新增至 ${activeShopCategory}...`} className="flex-1 bg-slate-50 border border-[#eeeeee] px-3 py-1.5 text-[11px] rounded-md outline-none focus:border-[#767fa5]" />
+                                                <button type="submit" className="bg-[#767fa5] text-white px-4 rounded-md font-bold text-sm active:opacity-90">✢</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </main>
