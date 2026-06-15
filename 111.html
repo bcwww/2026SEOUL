@@ -740,6 +740,82 @@
                 refImage: 'https://lh3.googleusercontent.com/d/1RrOAHIK7TFv_FkmvRgyWDbuOf_6s7LlG',
                 note: '💡 梓綺想買瑪莉珍鞋',
                 maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/FaetJrgx' }]
+            },
+            {
+                id: 'ss12',
+                name: '8️⃣ EPT弘大店',
+                location: '弘大',
+                tags: ['鞋子'],
+                address: '📍 地鐵②合井站 3號出口步行8分鐘',
+                time: '🕒 13:00-23:00',
+                phone: '📞 070-7758-3336',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/5xgWENXB' }]
+            },
+            {
+                id: 'ss13',
+                name: '9️⃣ 愛迪達',
+                location: '弘大',
+                tags: ['鞋子'],
+                address: '📍 地鐵②弘大站 9號出口步行1分鐘',
+                time: '🕒 11:00-22:00 / （五六日）10:30-22:00',
+                phone: '📞 02-338-8684',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/Gzdl87AE' }]
+            },
+            {
+                id: 'ss14',
+                name: '🔟 Wideumyu AK PLAZA弘大店',
+                location: '弘大',
+                tags: ['追星'],
+                address: '📍 地鐵②弘大站 5號出口步行1分鐘',
+                time: '🕒 11:00-22:00 / 周末 10:30-22:00',
+                phone: '📞 0507-1343-0429',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/GcAh8jgL' }]
+            },
+            {
+                id: 'ss15',
+                name: '4️⃣ 樂天瑪特清涼里店 (롯데마트 청량리점)',
+                location: '東大門',
+                tags: ['零食'],
+                address: '📍 地鐵①清涼里站 3號出口步行1分鐘',
+                time: '🕒 10:00-23:00 (休息 6/24、7/8)',
+                phone: '📞 02-3298-2500',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/xnOmFPdn' }]
+            },
+            {
+                id: 'ss16',
+                name: '1️⃣1️⃣ Hongik藥店 (홍익약국)',
+                location: '弘大',
+                tags: ['藥局'],
+                address: '📍 地鐵②弘大站 8號出口步行1分鐘',
+                time: '🕒 09:00-23:30',
+                phone: '📞 02-337-5414',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/GJZODvG0' }]
+            },
+            {
+                id: 'ss17',
+                name: '1️⃣2️⃣ Aeae',
+                location: '弘大',
+                tags: ['衣服'],
+                address: '📍 地鐵⑥漢江鎮站 3號出口步行7分鐘',
+                time: '🕒 12:00-20:00',
+                phone: '📞 070-4223-4096',
+                recommend: '📝 脆友推',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/FriZjlms' }]
+            },
+            {
+                id: 'ss18',
+                name: '1️⃣ Musenteu汉南洞旗舰店',
+                location: '漢南洞',
+                tags: ['衣服'],
+                address: '📍 地鐵⑥漢江鎮站 3號出口步行6分鐘',
+                time: '🕒 12:00-20:00',
+                recommend: '📝 姊姊推/一件好像800$',
+                maps: [{ name: '進入 Naver Map 導航', url: 'https://naver.me/FWT31DzX' }]
             }
         ];
 
@@ -874,9 +950,9 @@
             // 購物店家的篩選狀態
             const [shoppingSubTab, setShoppingSubTab] = useState('stores');
             const [activeShopStoreLocation, setActiveShopStoreLocation] = useState('全部');
-            const shopStoreLocations = ['全部', '弘大', '東大門', '聖水洞'];
+            const shopStoreLocations = ['全部', '弘大', '東大門', '聖水洞', '漢南洞'];
             const [activeShopStoreTag, setActiveShopStoreTag] = useState('全部');
-            const shopStoreTags = ['全部', '美妝', '小物', '衣服', '照相', '藥局', '帽子', '鞋子', '香水'];
+            const shopStoreTags = ['全部', '美妝', '小物', '衣服', '照相', '藥局', '帽子', '鞋子', '香水', '追星', '零食'];
 
             // 篩選後的購物店家資料
             const filteredShopStores = useMemo(() => {
